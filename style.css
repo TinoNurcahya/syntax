@@ -1,0 +1,443 @@
+/**
+**informasi
+*? pertanyaan
+*! peringatan
+*/
+
+
+/* selector {
+    property: value;
+} */
+
+
+/** FONT **/
+font-family {
+    mengatur jenis font yang akan di gunakan
+    font-family: arial, sans serif;
+}
+font-size {
+    mengatur ukuran font
+    (px, %, em)
+}
+font-weight {
+    mengatur ketebalan font
+    (lighter, normal, 100-900, bold, bolder)
+}
+font-variant {
+    mengubah font menjadi small caps
+    (normal, small-caps)
+}
+font-style {
+    mengubah font menjadi bercetak miring
+    (normal, italic, oblique)
+}
+line-height {
+    mengatur spasi antar baris
+    (normal, px, em)
+}
+
+
+/** TEXT **/
+color {
+    memberi warna pada tulisan [nama warna, hexadecimal, rgb]
+    red, #ff0000, rgb(255,0,0)
+}
+text-align{
+    mengatur format paragraf/text
+    (left, right, center, justify)
+}
+text-indent {
+    memberi identasi pada paragraf/text
+    (px, %)
+}
+text-decoration {
+    mengatur dekorasi pada text-align
+    (none, underline-bawah-, overline-atas-, line-through-coret-)
+}
+text-transform {
+    mengubah jenis huruf menjadi kecil, besar,kapital
+    (none, lowercase, uppercase, capitalize)
+}
+letter-spacing {
+    mengatur spasi antar huruf
+    (normal, px)
+}
+word-spacing {
+    mengatur spasi antar kata
+    (normal, px)
+}
+
+
+/** BACKGROUND **/
+background-color {
+    mengatur warna pada background
+}
+background-image {
+    mengatur gambar jadi background
+    (url(gambar.jpg)).
+    background-size: cover; agar menyesuaikan
+    /* search lebih lanjut*/
+    background-image: linear-gradien(sudut/arah,warna awal,warna akhir);
+    background-image: radial-gradien(sudut/arah,warna awal,warna akhir);
+    background-image: linear-gradien(90deg,blue,white); 
+    
+    contoh color stop pada warna blue 60%, red 40%
+}
+background-position {
+    mengatur posisi gambar pada background
+    (top left, top center, top right, center left, center center, center right, bottom left, bottom center, bottom right, x% y%, x-pos y-pos )
+}
+background-repeat {
+    mengatur jenis pengulangan gambar pada background
+    (no-repeat, akan mengakses background-position)
+}
+
+
+/** SELECTOR **/
+elemen html {
+    body {}
+    h1, h2 {} (koma yang berarti 'dan')
+    ul li a {} (yang berarti carikan a yang ada didalam li di dalam ul)
+}
+id {
+    bersifat unik (tidak boleh sama, dan tidak di sarankan karena berat)
+    #paragraf1 {}
+}
+class {
+    penamaan class bisa lebih dari 1 class="p cetak-tebal"
+    .paragraf2 {}
+}
+
+
+/** PSEUDO CLASS **/
+/* selector:hover {
+    color: red;
+} */
+:link {
+    default
+}
+:hover {
+    style ketika cursor berada disebuah link/elemen
+}
+:active {
+    style ketika sebuah link di klik
+}
+:visited {
+    style ketika link sudah pernah di kunjungi sebelumnya
+}
+/* child-nya */
+:first-child {
+    memilih element pertama dari pembungkusnya (parent)
+}
+:last-child {
+    memilih element terakhir dari pembungkusnya (parent)
+}
+:nth-child(n) {
+    memilih element ke-n dari sebuah pembungkusnya (1),(2) atau pola (2n), (3n+2), atau ganjil genap (even) & (odd)
+}
+/* posisi elemen */
+:first-of-type {
+    memilih elemen pertama dari sebuah jenis tag
+}
+:last-of-type {
+    memilih elemen terakhir dari sebuah jenis tag
+}
+
+
+/** INHERITANCE **/
+/* yaitu mengikuti style yang sudah ada */
+/* 
+body {
+    color: darkgray;
+}
+a {
+    color: inherit;
+}
+*/
+color, font, letter-spacing, line height, list-style, text-align, text-indent, text-transform, visibillity, whittespace
+
+
+/** SPECIFITY **/
+p {
+    color: red;
+}
+p {
+    color: green;
+}
+(maka yang akan di ambil adalah selector yang terakhir green), mengutamakan id, class, elemen
+
+
+/** CSS LAYOUTING **/
+/** DISPLAY **/
+div {
+    display: block;
+}
+span {
+    display: inline;
+}
+
+display: inline; {
+    tidak bisa mengatur width dan height, tidak dapat garis baru
+}
+display: inline-block; {
+    bisa mengatur width dan height, tidak dapat garis baru
+}
+display: block; {
+    menambahkan garis baru
+}
+display: none; {
+    elemen menjadi hilang
+}
+
+/** CSS FLEXBOX **/
+display: flex; {
+    container harus display flex untuk mengakses dibawah ini
+}
+
+flex-direction: row | row-reverse | column | column-reverse;
+memgatur arah elemen dalam container apakah dari kiri ke kanan atau sebaliknya, dari atas ke bawah atau sebaliknya.
+
+flex-wrap: wrap | wrap-reverse;
+mengatur elemen agar di pindahkan ke bawah jika containernya tidak muat.
+
+justify-content: flex-end | center | space-between | space-around | space-evenly;
+mengatur rata item secara horizontal (kiri-kanan)
+
+align-items: flex-end | center;
+mengatur rata item secara vertikal
+
+align-content: flex-end | center | space-between | space-around;
+hanya berfungsi jika item lebih 1 baris
+/** untuk itemnya **/
+order: angka;
+untuk menukar item yang ada dalam 1 container
+
+flex-grow singkatnya flex: angka;
+digunakan untuk ukuran item mengikuti container, container harus di isi terlebih dahulu contohnya flex: 1;
+
+align-self: flex-end | center | space-between
+untuk mengatur secara spesifik, gunakan di item container.
+wrap
+
+/** DIMENSI DAN OVERFLOW **/
+/** DIMENSI **/
+width {
+    px, %(relatif)
+}
+height {
+    px. %(relatif)
+}
+/** OVERFLOW **/
+overflow: (visible/auto/hidden/scroll);
+    { jika konten melebihi width dan height yg ditentukan maka disarankan menggunakan scroll
+}
+
+
+/** BOX MODEL **/
+urutan dari yang terluar ke dalam yaitu margin, border, padding, dan content
+
+margin {
+    area di sekitar kotak
+}
+border {
+    batas sekeliling border dan padding
+    (solid, dotted, dashed, double)
+}
+padding {
+    area antara content dan border
+}
+content {
+    berupa text atau gambar
+}
+
+
+/** FLOAT **/
+element dapat di paksa untuk berada di sebelah kiri atau kanan (none, left, right)
+
+
+/** position **/
+defaultnya adalah static.
+(membuka style baru yaitu top/left/bottom/right, selain static)
+relative {
+    (jarang di gunakan), dikombinasikan dengan top/left/bottom/right
+}
+absolute {
+    ruang yang ditempati dianggap tidak ada, relatif thdp elemen parent-nya(selama parent-nya juga non static)dikombinasikan dengan top/left/bottom/right
+}
+fixed {
+    ketika scroll maka akan tetap, contohnya navigasi bar
+}
+
+
+/** Z-INDEX **/
+    z-index: 1;
+    (element akan muncul paling depan secara 3D)
+
+
+
+
+
+/** CSS 3 **/
+
+/** BORDER RADIUS **/
+digunakan untuk div atau box untuk menjadi tumpul
+border-radius: (50px/50%);
+border-radius: (atas kiri, atas kanan, bawah kiri, bawah kanan);
+
+border-top-right-radius
+border-bottom-right-radius
+border-bottom-left-radius
+border-top-left-radius
+
+
+/** OPACITY **/
+digunakan untuk transparansi pada elemen, nilai 0-1
+opacity: 0 untuk transparan 1 untuk opacity 100%;
+
+
+/** RGBa & HSLa **/
+memberi warna dan juga transparansi-nya (red, green, blue, alpha), nilai 0-1
+rgba(0,0,0,0.1)
+
+
+/** BOX SHADOW **/
+multiple box shadow menggunnakan koma
+box-shadow: <x-offset> <y-offset> <blur> <color>;      (<inset> <x-offset> <y-offset> <blur> <spread> <color>) opsional
+box-shadow: 5px 5px 5px rgba(0,0,0,0.75);
+
+
+/** TEXT SHADOW **/
+multiple text shadow menggunnakan koma, bisa untuk membuat 3D
+text-shadow: <x-offset> <y-offset> <blur> <color>;
+
+
+/** FILTER **/
+memberikan efek visual pada gambar, background, border
+/* 
+filter: blur (px)
+        brightness (%)
+        contrast (%)
+        saturate (%)
+        grayscale (%)
+        sepia (%)
+        hue-rotste (deg)
+        invetr (%)
+        opacity (%)
+        drop-shadow
+ */
+
+
+/** TRANSFORM **/
+scale {
+    untuk memperbesar/memperkecil
+    scale(angka),scaleX(angka),scaleY(angka)
+}
+rotate {
+    untuk memutar
+    rotate(deg),rotateX(deg),rotateY(deg)
+}
+skew {
+    untuk membuat condong atau miring
+    skew(deg),skewX(deg),skewY(deg)
+}
+translate {
+    untuk membuat condong atau miring
+    translate(px),translateX(px),translateY(px)
+}
+
+
+/** TRANSITION **/
+selalu simpan transition dalam keadaan awal,  bukan hover. ada keadaan awal dan akhir(hover)
+transition: [property] <durasi(s/ms)> [fungsi] [delays/ms];
+transition: all 3s (ease, ease-in, ease-out, ease-in-out, linear, cubic-bezie (kurva)) 2s;
+transition: 1s;
+
+
+/** ANIMATION **/
+pertama buat keyframe-nya dulu, nilai from dan to bisa di ubah menjadi 0%,50%,100%. (0-100%)
+@keyframes [nama] {
+    from {
+        [property-css]
+    }
+
+    to {
+        [property-css]
+    }
+}
+
+Animation: [nama seperti keyframe] [durasi] [timing-function] [delay] [iteration-count(angka/infinite)] [direction(reverse, alternate, alternate-reverse)] [fill-mode(forwards, backwards)] [play-state(running/paused, NUNGGU JS)]
+
+
+/** CSS VALUE **/
+lenght absolute = px,cm,mm, etc
+px = website di media seperti tablet,hp,computer,dekstop
+pt = halaman buat di print ke kertas
+lenght relative :
+
+% = relative terhadap pembungkusnya
+ch = relative terhadap lebar karakter 0 dari font yang digunakan untuk placeholder yang gak tau tulisan karatker ada berapa misalnya dari database/inputan dari user, 60ch = ukuruan gak lebih dari 60 character dari sebuah elemen
+em = relatif terhadap ukuran font yang sedang digunakan oleh elemennya seperti ukuran pembungkusnya = dasar dari ukurannya
+
+rem = relatif terhdap font root html. html = 100px, 1em = 100px, 2em = 200px ( relative terhadap root )
+vh vw = lebar atau ukuran dari layar saat itu ( phone , komputer ) 1vh = 1% dari tinggi viewport
+
+100vh = elemen box akan memenuhi layar window maupun browser dipanjangi/ dibuka pakai device apapun, elemen memenuhi secara 100vh/100% dari dan diatur oleh browser dan berfungsi di semua device ( jenis hp,laptop dll )
+
+vmim = height 100 vmin  = tinggi elemen yang 100% dari ukuran viewport yang  minimal ( menjalankan ukuram yang lebih kecilnya ) layar yg paling kecil. dari hp = horizontal, vmin = layar horizontal
+
+vmax = menjalankan ukuran dari viewport terpanjangnya ( lebarnya menyesuaikan dengan ukuruan tinggi maksimalnya )
+
+
+/** CSS GRID **/
+grid container (element pembungkus grid)
+.container {
+    display: grid;
+}
+
+grid item (element yang berada 1 level didalam grid container)
+
+grid line (garis horizontal(kolom) atau vertikal(baris) yang memisahkan grid menjadi beberapa bagian dan ditandai dengan angka)
+
+grid cell (perpotongan/ pertemuan antara garis dan kolom  di dalam grid)
+
+grid area (kumpulan lebih dari satu grid cell yang membentuk kotak)
+
+grid track (ukuran/jarak antara 2 grid line, bisa horizontal (kolom) atau vertikal(baris))
+
+grid gap (jarak antara cell)
+
+/* UNTUK CONTAINER */
+grid-template-columns
+grid-template-rows
+grid-auto-columns
+grid-auto-rows
+grid-auto-flow
+grid-template-areas
+grid-template
+grid-column-gap
+grid-row-gap
+grid-gap
+grid
+justify-items
+align-items
+place-items
+justify-content
+align-content
+place-content
+
+/* UNTUK ITEM */
+grid-column-start
+grid-column-end
+grid-row-start
+grid-row-end
+grid-column
+grid-row
+grid-area
+justify-self
+align-self
+place-self
+
+
+/** LAIN LAIN  */
+flex-shrink: 0; untuk agar tidak menyusut/ mempertahankan bentuk asli
+

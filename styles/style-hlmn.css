@@ -1,0 +1,162 @@
+/* inheritance
+padding: 10px;
+padding: inherit; maka akan mengambil padding yang sudah ada sebelumnya */
+
+/* color gradient rgba (255,0,0,1) & (255,0,0,1) */
+
+/* universal selektor */
+* {
+  font-family: Arial;
+}
+
+/* type selector */
+h1 {
+  color: blueviolet;
+}
+
+h2 {
+  color: darkblue;
+}
+
+/* class selector */
+.sarapan {
+  color: darkturquoise;
+}
+
+/* id selector */
+#maksi_senin {
+  color: red;
+}
+
+/* child selector */
+/* hanya memilih satu tingkat (keturunan)dibawahnya */
+p > b {
+  color: darkorange;
+}
+
+li > b {
+  color: darkslateblue;
+}
+
+/* descedant selector */
+/* memilih semua keturunan */
+p b {
+  color: darkorange;
+}
+
+/* adjacent sibling selector (jarang di pakai)*/
+/* cari h2 setelah p */
+p + h2 {
+  color: deeppink;
+}
+
+/* general sibling selector */
+/* cari p setelah h2 */
+/* h2 ~ p {
+  font-family:'Times New Roman';
+} */
+
+h3 {
+  font-family: Georgia;
+  font-size: xx-large;
+  text-align: center;
+  text-shadow: 2px 2px 5px blueviolet; /*kanan, bawah, pudar, warna*/
+  word-spacing: 0.5em;
+  letter-spacing: 3px;
+}
+
+#credit {
+  font-family: Verdana;
+  font-size: 11px;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: capitalize; /*agar awal kata huruf besar*/
+  text-align: center;
+  text-decoration: underline;
+}
+
+#tautan {
+  text-decoration: none; /*ilangin garis bawah*/
+  font-size: 150%;
+  text-transform: lowercase; /*kecil semua*/
+}
+a#tautan:hover {
+  /*di dekatkan*/
+  color: deeppink;
+}
+a#tautan:active {
+  /*di klik*/
+  color: darkcyan;
+}
+a#tautan:visited {
+  /*di kunjungi*/
+  color: green;
+}
+
+#intro {
+  font-family: "Segoe UI";
+  font-size: 1em; /*ukuran asli font 1em*/
+}
+
+.border-1 {
+  color: black;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 8px;
+}
+#atas-solid {
+  border-top-width: 4px;
+  border-top-style: solid;
+}
+#kiri-double {
+  border-color: blueviolet;
+  border-left-width: 4px;
+  border-left-style: double;
+}
+#bawah-dotted {
+  border-color: crimson;
+  border-bottom-width: 4px;
+  border-bottom-style: dotted;
+}
+#kanan-dashed {
+  border-color: #6495ed;
+  border-right-width: 4px;
+  border-right-style: dashed;
+}
+
+span {
+  background-color: rgba(255, 200, 0, 0.5);
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  padding: 10px;
+  border: 1px;
+}
+.inline {
+  display: inline;
+}
+.block {
+  display: block;
+}
+.inline-block {
+  display: inline-block;
+}
+.flex {
+  display: flex;
+}
+.flex-container {
+  background-color: aqua;
+  display: flex;
+  flex-wrap: wrap;
+  height: 200px;
+  padding: 10px;
+  justify-content: center;
+}
+.flex-item {
+  background-color: azure;
+  display: flex;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+}
