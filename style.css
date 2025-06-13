@@ -249,7 +249,8 @@ padding {
 content {
     berupa text atau gambar
 }
-
+/** SCROLL **/
+scroll-margin-top/bottom/left
 
 /** FLOAT **/
 element dapat di paksa untuk berada di sebelah kiri atau kanan (none, left, right)
