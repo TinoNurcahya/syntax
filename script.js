@@ -480,7 +480,6 @@ var mahasiswa = {
 }
 mahasiswa.IPKumulatif();
 
-
 //* ======= ANATOMI OBJECT 
 var orang = {
   //* properti
