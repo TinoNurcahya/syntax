@@ -161,9 +161,6 @@ setAttribute() digunakan untuk menambahkan atau mengubah atribut dari elemen HTM
       box.classList.replace("merah", "biru"); //Class berubah dari merah menjadi biru
 
 
-
-
-
 Mengubah isi elemen (innerHTML, textContent)
 Mengubah atribut (setAttribute)
 Mengatur gaya CSS (style)
