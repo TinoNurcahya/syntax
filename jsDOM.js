@@ -95,6 +95,7 @@ setAttribute() digunakan untuk menambahkan atau mengubah atribut dari elemen HTM
     const kotak = document.getElementById("box"); //ambil div menggunakan id dengan nama box
     kotak.setAttribute("class", "kotak-biru");  //menambah class dengan value kotak-biru pada div
     
+
   element.getAttribute()
     <div id="box">Kotak</div>
 
@@ -102,6 +103,7 @@ setAttribute() digunakan untuk menambahkan atau mengubah atribut dari elemen HTM
     kotak.setAttribute("class", "merah"); //menambah class dengan value merah
     let kelas = element.getAttribute("class");
     console.log(kelas); // Output: "merah"
+
 
   element.removeAttribute()
     <div id="box" class="kotak besar">Isi Kotak</div>
@@ -111,14 +113,52 @@ setAttribute() digunakan untuk menambahkan atau mengubah atribut dari elemen HTM
 
 
 4. element.classList
+    =========== element.classList.add()   Menambahkan class ===========
+      <div id="box" class="kotak">Kotak</div>
 
-    element.classList.add()   //Menambahkan class
-    element.classList.remove()    //menghapus class
-    element.classList.toggle()    //Menambah jika belum ada, hapus jika sudah ada
-    element.classList.item()
-    element.classList.contains()    //mengecek apakah class ada 
-    element.classList.replace()    //ganti class
+      const box = document.getElementById("box");
+      <div id="box" class="kotak">Kotak</div>
+      box.classList.add("merah");   //* <div id="box" class="kotak merah">Kotak</div>
 
+
+    =========== element.classList.remove()    menghapus class ===========
+      <div id="box" class="kotak merah">Kotak</div>
+
+      const box = document.getElementById("box");
+      box.classList.remove("merah");  //* <div id="box" class="kotak">Kotak</div>r
+
+
+    =========== element.classList.toggle()    Menambah jika belum ada, hapus jika sudah ada ===========
+      <button onclick="ubah()">Toggle Class</button>
+      <div id="box">Kotak</div>
+        
+      function ubah() {
+        const box = document.getElementById("box");
+        box.classList.toggle("aktif");
+      }
+
+
+    =========== element.classList.item() Mengambil class berdasarkan index ===========
+      <div id="box" class="merah besar kotak"></div>
+
+      const box = document.getElementById("box");
+      console.log(box.classList.item(0)); // Output: merah
+      console.log(box.classList.item(1)); // Output: besar
+
+
+    =========== element.classList.contains()    mengecek apakah class tertentu ada ===========
+      <div id="box" class="kotak besar"></div>
+          
+      const box = document.getElementById("box");
+      if (box.classList.contains("besar")) {
+        alert("Kotak ini besar!");
+      }
+
+    =========== element.classList.replace()    Ganti class lama dengan yang baru ===========
+      <div id="box" class="merah"></div>
+
+      const box = document.getElementById("box");
+      box.classList.replace("merah", "biru"); //Class berubah dari merah menjadi biru
 
 
 
