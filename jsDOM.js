@@ -68,7 +68,7 @@ Document
     const semuaItem = document.querySelectorAll(".item");
     semuaItem.forEach((item) => item.style.backgroundColor = "lightblue");
 
-========================================== DOM Manipulation ==========================================
+========================================== DOM element Manipulation ==========================================
 
 1. element.innerHTML
 
@@ -158,11 +158,79 @@ setAttribute() digunakan untuk menambahkan atau mengubah atribut dari elemen HTM
       <div id="box" class="merah"></div>
 
       const box = document.getElementById("box");
-      box.classList.replace("merah", "biru"); //Class berubah dari merah menjadi biru
+      box.classList.replace("merah", "biru");  //Class berubah dari merah menjadi biru
 
 
-Mengubah isi elemen (innerHTML, textContent)
-Mengubah atribut (setAttribute)
-Mengatur gaya CSS (style)
-Menambah atau menghapus elemen
-Menangani event (klik, input, dll.)
+========================================== DOM node Manipulation ==========================================
+
+=========== document.createElement("nama_tag");   "div", "p", "li", "button", "img", dll. ===========
+=========== parent.appendChild(child);  parent: tempat node akan ditambahkan child: Node (bisa elemen, teks, dll) yang ingin ditambahkan =========== 
+
+//buat elemen baru
+  const pbaru = document.createElement("p"); // <p></p>
+  const teksPBaru = document.createTextNode("Halo Dunia!"); // Halo Dunia!
+
+//simpan tulisan ke dalam paragraf
+  pbaru.appendChild(teksPBaru); // <p>Halo Dunia!</p>
+
+//simpan pBaru diakhir section A
+  const sectionA = document.getElementById("A");
+  sectionA.appendChild(pbaru);  //akan tampil di akhir section
+
+
+=========== parentNode.insertBefore(newNode, referenceNode); =========== 
+  parentNode: Elemen induk tempat kamu ingin menyisipkan
+  newNode: Node yang ingin kamu tambahkan
+  referenceNode: diletakkan sebelum ini
+
+    <ul id="daftar">
+      <li>Item 1</li>
+      <li id="referensi">Item 2</li>
+      <li>Item 3</li>
+    </ul>
+
+    <script>
+      const daftar = document.getElementById("daftar");
+      const itemBaru = document.createElement("li");
+      itemBaru.textContent = "Item Baru";
+
+      const referensi = document.getElementById("referensi");
+      daftar.insertBefore(itemBaru, referensi);
+    </script>
+
+
+=========== parentNode.removeChild(childNode); =========== 
+parentNode → Elemen induknya
+childNode → Elemen anak yang akan dihapus
+
+    <ul id="daftar">
+      <li id="hapus-ini">Item 1</li>
+      <li>Item 2</li>
+    </ul>
+
+    <script>
+      const daftar = document.getElementById("daftar");
+      const item = document.getElementById("hapus-ini");
+
+      daftar.removeChild(item);
+    </script>
+
+
+=========== parentNode.replaceChild(newChild, oldChild =========== 
+  parentNode → Elemen induknya
+  newChild → Elemen baru yang akan menggantikan
+  oldChild → Elemen lama yang akan diganti
+
+  <div id="kotak">
+    <p id="lama">Teks lama</p>
+  </div>
+
+  <script>
+    const kotak = document.getElementById("kotak");
+    const lama = document.getElementById("lama");
+
+    const baru = document.createElement("h2");
+    baru.textContent = "Teks Baru";
+
+    kotak.replaceChild(baru, lama);
+  </script>
