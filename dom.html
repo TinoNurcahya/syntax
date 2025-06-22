@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      border: 1px solid black;
+    }
+
+    .aktif {
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body class="light">
+<button onclick="ubah()">Toggle Class</button>
+<button onclick="hps()">Toggle Class delete</button>
+<div id="box">Kotak</div>
+
+<ul id="A">
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+<script>
+  function ubah() {
+    const box = document.getElementById("box");
+    box.classList.toggle("aktif");
+  const pbaru = document.createElement("li");
+  const teksp = document.createTextNode("Halo Dunia!");
+  pbaru.appendChild(teksp);
+  const tekspA = document.getElementById("A");
+  tekspA.appendChild(pbaru);
+  }
+
+function hps() {
+  const tekspA = document.getElementById("A");
+const b = tekspA.lastElementChild;
+    tekspA.removeChild(b);
+}
+
+</script>
+
+
+</body>
+
+</html>

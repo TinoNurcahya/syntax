@@ -216,7 +216,7 @@ childNode → Elemen anak yang akan dihapus
     </script>
 
 
-=========== parentNode.replaceChild(newChild, oldChild =========== 
+=========== parentNode.replaceChild(newChild, oldChild) =========== 
   parentNode → Elemen induknya
   newChild → Elemen baru yang akan menggantikan
   oldChild → Elemen lama yang akan diganti
