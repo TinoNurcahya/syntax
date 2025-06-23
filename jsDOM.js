@@ -234,3 +234,99 @@ childNode → Elemen anak yang akan dihapus
 
     kotak.replaceChild(baru, lama);
   </script>
+
+=============== METHOD TERBARU ===============
+element.append(node1, node2, ..., teks);
+Menambahkan satu atau lebih node (elemen atau teks) ke AKHIR dari elemen tertentu.
+
+element.prepend(node1, node2, ..., teks);
+Menambahkan node atau teks ke AWAL isi elemen.
+
+element.remove()
+Menghapus elemen langsung dari DOM tanpa harus tahu siapa parentNode-nya.
+
+element.replaceWith(node1, node2, ..., teks);
+Mengganti elemen langsung dengan elemen lain atau teks, tanpa perlu akses ke parentNode.
+
+element.before(node1, node2, ..., teks);
+Menyisipkan elemen atau teks sebelum elemen tertentu, langsung tanpa perlu akses ke parent.
+
+element.after(node1, node2, ..., teks);
+Menyisipkan node atau teks setelah elemen tertentu, tanpa akses ke parent.
+
+
+========================================== DOM Event ==========================================
+  merepresentasikan sebuah kejadian yang terjadi di dalam DOM. oleh user: (MouseEvent, KeyboardEvent, dll)/ oleh sistem (animasi selesai, halaman di load, dll)
+  
+  =========== element.addEventListener("namaEvent", fungsiYangDijalankan); ===========
+  <button id="tombolku">Klik Saya</button>
+  const tombol = document.getElementById("tombolku");
+  
+  tombol.addEventListener("click", function() {
+    alert("Kamu baru saja mengklik tombol!");
+  });
+
+  
+=========== Event handler (cara lama jarang dipakai)===========
+  <button id="tombolku">Klik Saya</button>
+  const tombol = document.getElementById("tombolku");
+
+  tombol.onclick = function() {
+    alert("Klik pakai onclick");
+  };
+
+========================================== DOM Event (nama event) ==========================================
+============== Mouse events
+  click => Saat elemen diklik
+  dblclick => Saat elemen diklik dua kali
+  mousedown => Saat tombol mouse ditekan
+  mouseup => Saat tombol mouse dilepas
+  mousemove => Saat mouse digerakkan di atas elemen
+  mouseenter => Saat mouse masuk ke area elemen (tidak bubbling)
+  mouseleave => Saat mouse keluar dari area elemen
+  mouseover => Saat mouse masuk (bubbling, termasuk anak elemen)
+  mouseout => Saat mouse keluar (bubbling)
+  contextmenu => Saat klik kanan mouse
+
+============== keyboard events
+  keydown => Saat tombol keyboard ditekan
+  keypress => (deprecated) Gunakan keydown atau keyup
+  keyup => Saat tombol keyboard dilepas
+
+============== Form Events
+  submit => Saat form dikirim <form>
+  change => Saat nilai elemen berubah <input>, <select>
+  input => Saat user mengetik input (real-time)
+  focus => Saat elemen mendapat fokus
+  blur => Saat elemen kehilangan fokus
+  reset => Saat form di-reset
+
+==============  Window & Document Events
+  load => Saat semua konten selesai dimuat
+  DOMContentLoaded => Saat HTML selesai dimuat (sebelum gambar/CSS)
+  resize => Saat ukuran jendela diubah
+  scroll => Saat halaman di-scroll
+  unload => Saat user meninggalkan halaman (deprecated)
+  beforeunload => Saat sebelum user meninggalkan halaman
+
+==============  Touch Events (untuk mobile)
+  touchstart => Saat sentuhan dimulai
+  touchend => Saat sentuhan selesai
+  touchmove => Saat jari digerakkan di layar
+  touchcancel => Saat sistem membatalkan sentuhan
+
+==============  Drag & Drop Events
+  dragstart => Saat elemen mulai diseret
+  drag => Saat elemen sedang diseret
+  dragend => Saat elemen selesai diseret
+  dragenter => Saat elemen diseret masuk ke target
+  dragleave => Saat elemen keluar dari target
+  dragover => Saat elemen diseret di atas target
+  drop => Saat elemen dijatuhkan ke target
+
+==============  Lain-lain
+  animationstart, animationend, animationiteration	Untuk animasi CSS
+  transitionend	Saat transisi CSS selesai
+  error	Saat error terjadi (gambar, skrip, dll.)
+  wheel	Saat mouse wheel digulir
+  copy, cut, paste	Saat user menyalin, memotong, atau menempel

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan DOM 1-Warna</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous" />
+
+    <style>
+      .merah {
+        background-color: red;
+        height: 30px;
+        margin-bottom: 5px;
+      }
+      .hijau {
+        background-color: green;
+        height: 30px;
+        margin-bottom: 5px;
+      }
+      .biru {
+        background-color: blue;
+        height: 30px;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <h1 class="text-center mb-4">Latihan DOM - Bermain dengan Warna</h1>
+
+      <div class="text-center mb-3">
+        <button type="button" id="btnUbahWarna" class="btn btn-primary">Klik saya</button>
+        <button type="button" id="btnRandomWarna" class="btn btn-secondary ms-2">Warna Random</button>
+      </div>
+
+      <div class="mb-2">
+        <div class="merah"></div>
+        <input type="range" name="sMerah" min="0" max="255" class="form-range" />
+      </div>
+      <div class="mb-2">
+        <div class="hijau"></div>
+        <input type="range" name="sHijau" min="0" max="255" class="form-range" />
+      </div>
+      <div class="mb-2">
+        <div class="biru"></div>
+        <input type="range" name="sBiru" min="0" max="255" class="form-range" />
+      </div>
+    </div>
+
+    <script>
+      const btnUbahWarna = document.getElementById("btnUbahWarna");
+      const btnRandomWarna = document.getElementById("btnRandomWarna");
+
+      // Toggle class biru
+      btnUbahWarna.addEventListener("click", function () {
+        document.body.classList.toggle("biru");
+      });
+
+      // Random background color
+      btnRandomWarna.addEventListener("click", function () {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+      });
+
+      // Slider input
+      const sMerah = document.querySelector("input[name=sMerah]");
+      const sHijau = document.querySelector("input[name=sHijau]");
+      const sBiru = document.querySelector("input[name=sBiru]");
+
+      function updateBackgroundColor() {
+        const r = sMerah.value;
+        const g = sHijau.value;
+        const b = sBiru.value;
+        document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+      }
+
+      sMerah.addEventListener("input", updateBackgroundColor);
+      sHijau.addEventListener("input", updateBackgroundColor);
+      sBiru.addEventListener("input", updateBackgroundColor);
+    </script>
+  </body>
+</html>
