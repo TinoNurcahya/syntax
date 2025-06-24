@@ -438,6 +438,16 @@ justify-self
 align-self
 place-self
 
+/** MEDIA RESPONSIVE **/
+/* Mobile */
+@media (max-width: 768px) { ... }
+/* Tablet */
+@media (max-width: 1024px) { ... }
+/* Laptop */
+@media (max-width: 1280px) { ... }
+/* Desktop besar */
+@media (max-width: 1440px) { ... }
+
 
 /** LAIN LAIN  */
 flex-shrink: 0; untuk agar tidak menyusut/ mempertahankan bentuk asli
