@@ -21,7 +21,7 @@ h1 {
   text-transform: uppercase;
 }
 h1 span {
-  color: #5c33f6;
+  color: #2C5F2D;
   opacity: 0.8;
 }
 .desc {
@@ -43,11 +43,11 @@ b {
 
 #score-computer {
   margin-right: 5px;
-  color: #5c33f6;
+  color: #0063B2;
 }
 #score-player {
   margin-left: 5px;
-  color: #da0037;
+  color: #2C5F2D;
 }
 
 .nofocus {
@@ -74,7 +74,6 @@ b {
   right: 0;
   left: 0;
   color: #0a1931;
-  /* background: linear-gradient(45deg, #5C33F6, #DA0037); */
   background: rgba(249, 249, 249, 0.95);
   border: 4px solid #0a1931;
   border-radius: 15px;
@@ -143,7 +142,7 @@ b {
   width: 560px;
   height: 250px;
   margin: 5px auto;
-  background: linear-gradient(to bottom, #185adb 0%, #5c33f6 100%);
+  background: linear-gradient(to bottom, #0247d0 0%, #023864 100%);
   position: relative;
   padding-top: 40px;
   box-sizing: border-box;
@@ -155,7 +154,7 @@ b {
   width: 560px;
   height: 250px;
   margin: 5px auto;
-  background: linear-gradient(to bottom, #cd113b 0%, #da0037 100%);
+  background: linear-gradient(to bottom, #2C5F2D 0%, #13e116 100%);
   position: relative;
   border-radius: 0 0 40px 40px;
   box-shadow: 0 0.5rem 1rem rgba(218, 0, 55, 0.15);
@@ -164,7 +163,7 @@ b {
 .info {
   width: 150px;
   height: 60px;
-  border: 5px solid #cd113b;
+  border: 5px solid #2C5F2D;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   position: absolute;
   left: 50%;
@@ -226,18 +225,16 @@ li.pilihan {
   transform: scale(0.95);
 }
 
-/* strong { color: #DA0037;}
-em { color: #5C33F6; } */
 strong,
 em {
   text-decoration: underline;
 }
 samp {
-  color: #5c33f6;
+  color: #0063B2;
   font-weight: bold;
 }
 sub {
-  color: #da0037;
+  color: #2C5F2D;
   font-weight: bold;
 }
 
@@ -311,7 +308,7 @@ sub {
   margin-top: 25px;
   font-size: 28px;
   text-align: center;
-  color: #da0037;
+  color: #023864;
 }
 .credit {
   font-size: 16px;
@@ -319,7 +316,7 @@ sub {
 }
 .credit a {
   text-decoration: none;
-  color: #da0037;
+  color: #023864;
   font-weight: bold;
 }
 .credit a:hover {
@@ -373,7 +370,6 @@ sub {
   .container {
     width: 100%;
     margin: 0;
-    /* padding: 30px 0 0 0; */
     padding: 0px 0 0 0;
     position: relative;
   }

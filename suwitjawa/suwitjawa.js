@@ -1,5 +1,3 @@
-console.log("-- Suwit Jawa v2.0");
-
 const gambarComputer = document.querySelector('.img-computer');
 const pilihan = Array.from(document.querySelectorAll('.pilihan > img'));
 const info = document.querySelector('.info');
@@ -115,9 +113,6 @@ function notePlayer() {
       return 'hmm... INTERESTING!';
 }
 
-
-// PROGRAM SETELAH REFACTORY
-
 pilihan.forEach(function(img) {
   img.addEventListener('click', function() {
     const pilihanComputer = getPilihanComputer();
@@ -158,11 +153,6 @@ pilihan.forEach(function(img) {
         scoreResultObject.style.color = '#5C33F6';
         document.getElementById('score-result-note').textContent = noteComp();
         scoreComputer.textContent = scoreComputerCount = 4;
-          // scoreComputer.textContent = scoreComputerCount = 0;
-          // scorePlayer.textContent = scorePlayerCount = 0;
-          // info.classList.remove('text-black');
-          // info.style.backgroundColor = '#F9F9F9';
-          // info.textContent = '';
       }
       else if (scorePlayerCount >= 4) {
         scoreResult.classList.remove('hidden');
@@ -170,11 +160,6 @@ pilihan.forEach(function(img) {
         scoreResultObject.style.color = '#DA0037';
         document.getElementById('score-result-note').textContent = notePlayer();
         scorePlayer.textContent = scorePlayerCount = 4;
-          // scoreComputer.textContent = scoreComputerCount = 0;
-          // scorePlayer.textContent = scorePlayerCount = 0;
-          // info.classList.remove('text-black');
-          // info.style.backgroundColor = '#F9F9F9';
-          // info.textContent = '';
       }
     }, 1100);
 
@@ -199,81 +184,3 @@ scoreResult.querySelector('button').addEventListener('click', function() {
 
 
 
-/* PROGRAM SEBELUM REFACTORY:
-const semut = document.querySelector('.semut');
-  semut.addEventListener('click', function() {
-    const pilihanComputer = getPilihanComputer();
-      if (pilihanComputer === 'semut') {
-        gambarComputer.setAttribute('src', 'https://i.ibb.co/g3wfxgM/semut.png');
-        gambarComputer.setAttribute('alt', 'Semut');
-        gambarComputer.setAttribute('title', 'Semut');
-      }
-      else if (pilihanComputer === 'manusia') {
-        gambarComputer.setAttribute('src', 'https://i.ibb.co/swkWMHt/orang.png');
-        gambarComputer.setAttribute('alt', 'Manusia');
-        gambarComputer.setAttribute('title', 'Manusia');
-      }
-      else if (pilihanComputer === 'gajah') {
-        gambarComputer.setAttribute('src', 'https://i.ibb.co/x8GqR9f/gajah.png');
-        gambarComputer.setAttribute('alt', 'Gajah');
-        gambarComputer.setAttribute('title', 'Gajah');
-      }
-
-    const pilihanPlayer = this.className;  // mengambil nama class senidri
-
-    const hasil = getHasil(pilihanComputer, pilihanPlayer);
-    info.textContent = hasil;
-  });
-
-
-const manusia = document.querySelector('.manusia');
-  manusia.addEventListener('click', function() {
-    const pilihanComputer = getPilihanComputer();
-      if (pilihanComputer === 'semut') {
-        gambarComputer.setAttribute('src', 'https://i.ibb.co/g3wfxgM/semut.png');
-        gambarComputer.setAttribute('alt', 'Semut');
-        gambarComputer.setAttribute('title', 'Semut');
-      }
-      else if (pilihanComputer === 'manusia') {
-        gambarComputer.setAttribute('src', 'https://i.ibb.co/swkWMHt/orang.png');
-        gambarComputer.setAttribute('alt', 'Manusia');
-        gambarComputer.setAttribute('title', 'Manusia');
-      }
-      else if (pilihanComputer === 'gajah') {
-        gambarComputer.setAttribute('src', 'https://i.ibb.co/x8GqR9f/gajah.png');
-        gambarComputer.setAttribute('alt', 'Gajah');
-        gambarComputer.setAttribute('title', 'Gajah');
-      }
-
-    const pilihanPlayer = this.className;  // mengambil nama class senidri
-
-    const hasil = getHasil(pilihanComputer, pilihanPlayer);
-    info.textContent = hasil;
-  });
-
-
-const gajah = document.querySelector('.gajah');
-  gajah.addEventListener('click', function() {
-    const pilihanComputer = getPilihanComputer();
-      if (pilihanComputer === 'semut') {
-        gambarComputer.setAttribute('src', 'https://i.ibb.co/g3wfxgM/semut.png');
-        gambarComputer.setAttribute('alt', 'Semut');
-        gambarComputer.setAttribute('title', 'Semut');
-      }
-      else if (pilihanComputer === 'manusia') {
-        gambarComputer.setAttribute('src', 'https://i.ibb.co/swkWMHt/orang.png');
-        gambarComputer.setAttribute('alt', 'Manusia');
-        gambarComputer.setAttribute('title', 'Manusia');
-      }
-      else if (pilihanComputer === 'gajah') {
-        gambarComputer.setAttribute('src', 'https://i.ibb.co/x8GqR9f/gajah.png');
-        gambarComputer.setAttribute('alt', 'Gajah');
-        gambarComputer.setAttribute('title', 'Gajah');
-      }
-
-    const pilihanPlayer = this.className;  // mengambil nama class senidri
-
-    const hasil = getHasil(pilihanComputer, pilihanPlayer);
-    info.textContent = hasil;
-  });
-*/
