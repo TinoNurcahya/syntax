@@ -53,8 +53,11 @@ Berisi catatan tag penting seperti:
 - if-else, switch
 - function, arguments, refactoring, variabel scope, rekursif
 - array, manipulation, method
-- object, nested, 
+- object, object nested
 - DOM & Event
+- DOM selection, DOM manipulation, DOM traversal
+- method
+- event prevent default, event handler, event bubling
 
 ---
 
@@ -62,5 +65,6 @@ Berisi catatan tag penting seperti:
 - Dasar PHP
 - Koneksi MySQL
 - Validasi form
+- coming soon  :)
 
 ---
