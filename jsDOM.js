@@ -266,7 +266,27 @@ Menyisipkan node atau teks setelah elemen tertentu, tanpa akses ke parent.
     alert("Kamu baru saja mengklik tombol!");
   });
 
+  // CARA CEPAT
+  document.getElementById("tombolku").addEventListener("click", function() {
+    alert("Kamu baru saja mengklik tombol!");
+  });
+
   
+=========== Event Prevent Default (mencegah aksi bawaan)===========
+  element.addEventListener("click/dll", function(e/event) {
+  e.preventDefault();
+});
+
+// contoh mencegah form hilang saat reload
+<a href="https://google.com" id="linkku">Klik Aku</a>
+
+const link = document.getElementById("linkku");
+link.addEventListener("click", function(e) {
+  e.preventDefault(); // Mencegah pindah ke Google
+  alert("Link dicegah! Kamu tetap di sini.");
+});
+
+
 =========== Event handler (cara lama jarang dipakai)===========
   <button id="tombolku">Klik Saya</button>
   const tombol = document.getElementById("tombolku");
@@ -275,7 +295,7 @@ Menyisipkan node atau teks setelah elemen tertentu, tanpa akses ke parent.
     alert("Klik pakai onclick");
   };
 
-========================================== DOM Event (nama event) ==========================================
+========================================== DOM Event (nama-nama event) ==========================================
 ============== Mouse events
   click => Saat elemen diklik
   dblclick => Saat elemen diklik dua kali
@@ -330,3 +350,113 @@ Menyisipkan node atau teks setelah elemen tertentu, tanpa akses ke parent.
   error	Saat error terjadi (gambar, skrip, dll.)
   wheel	Saat mouse wheel digulir
   copy, cut, paste	Saat user menyalin, memotong, atau menempel
+
+
+========================================== DOM Traversal (penelusuran DOM )==========================================
+
+<div class="container">
+    <div class="card">
+      <img src="img/1.jpg" width="96" height="96">
+      <span class="nama">Kopi abc</span>
+      <span class="telp">08123456789</span>
+      <span class="close">×</span>
+    </div> 
+</div>
+
+const tombolClose = document.querySelectorAll(".close");
+tombolClose.forEach(function(btnclose) {
+  btnclose.addEventListener("click", function(e) {
+    const card = e.target.parentElement; // dambil elemen induk (.card)
+    card.remove(); // hapus card
+  });
+});
+
+
+========================================== Event bubling (mekanisme pergerakan event dalam DOM) ==========================================
+  Ketika kamu klik suatu elemen, event tersebut "mengalir ke atas" dari elemen itu, ke induknya, ke induk dari induknya, dan seterusnya… sampai document.
+
+  <div class="container">
+    <div class="card">
+      <button class="btn">Klik Saya</button>
+    </div>
+  </div>
+  const btn = document.querySelector(".btn");
+  const card = document.querySelector(".card");
+  const container = document.querySelector(".container");
+
+  btn.addEventListener("click", function() {
+    console.log("Tombol diklik");
+  });
+
+  card.addEventListener("click", function() {
+    console.log("Card terkena event click");
+  });
+
+  container.addEventListener("click", function() {
+    console.log("Container juga ikut kena click");
+  });
+
+  Kamu klik tombol .btn, maka urutan bubbling-nya:
+  Event terjadi di tombol
+  Mengalir ke .card
+  Lanjut ke .container
+  Sampai ke document
+
+  Tombol diklik
+  Card terkena event click
+  Container juga ikut kena click
+
+
+  <ul id="todo-list">
+    <li><span class="hapus">×</span> Belajar</li>
+    <li><span class="hapus">×</span> Makan</li>
+  </ul>
+
+  const list = document.getElementById("todo-list");  //selector
+
+  list.addEventListener("click", function(e) {  //Tambahkan event listener untuk event klik pada elemen list (<ul> tadi). Artinya: setiap kali ada yang diklik di dalam <ul>, fungsi ini akan dijalankan.
+
+    if (e.target.classList.contains("hapus")) { //elemen yang di klik oleh user, cek apakah elemen itu punya classList "hapus" (<span class="hapus">×</span>).
+      e.target.parentElement.remove();  //ambil elemen induk dari yang diklik, yaitu elemen <li>. lalu hapus elemen itu dari halaman
+    }
+  });
+
+
+=========== Event Propagation (menghentikan buble) (tidak wajib stopPropagation())===========
+
+//contoh modal pop up
+<div class="overlay" id="modal">
+  <div class="popup">
+    <p>Ini isi modal</p>
+  </div>
+</div>
+
+const modal = document.getElementById("modal");
+
+modal.addEventListener("click", function() {
+  modal.style.display = "none";
+});
+
+modal.querySelector(".popup").addEventListener("click", function(e) {
+  e.stopPropagation(); // Klik di dalam popup tidak menutup
+});
+
+//contoh modal pop up ke 2
+  <h2>Daftar Belanja</h2>
+  <ul id="daftar">
+    <li><span>🛒 Kopi</span> <button class="hapus">Hapus</button></li>
+    <li><span>🍞 Roti</span> <button class="hapus">Hapus</button></li>
+    <li><span>🥛 Susu</span> <button class="hapus">Hapus</button></li>
+  </ul>
+
+  <script>
+    const daftar = document.getElementById("daftar");
+
+    // Kita hanya pasang 1 event listener di elemen UL
+    daftar.addEventListener("click", function(e) {
+      if (e.target.classList.contains("hapus")) {
+        e.target.parentElement.remove(); // Hapus LI
+      }
+    });
+  </script>
+
