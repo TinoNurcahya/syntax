@@ -29,32 +29,32 @@ function getHasil(computer, player) {
       if (computer === 'manusia') {
         scoreComputerCount += 1;
         kesempatanTotal -= 1;
-        return 'KALAH..';
+        return 'KALAH';
       } else {
         scorePlayerCount += 1;
-        return 'MENANG!';
+        return 'MENANG';
       }
     }
   // if (player === 'manusia') return (computer === 'semut')? 'MENANG!' : 'KALAH..';
     else if (player === 'manusia') {
       if (computer === 'semut') {
         scorePlayerCount += 1;
-        return 'MENANG!';
+        return 'MENANG';
       } else {
         scoreComputerCount += 1;
         kesempatanTotal -= 1;
-        return 'KALAH..';
+        return 'KALAH';
       }
     }
   // if (player === 'gajah') return (computer === 'manusia')? 'MENANG!' : 'KALAH..';
     else if (player === 'gajah') {
       if (computer === 'manusia') {
         scorePlayerCount += 1;
-        return 'MENANG!';
+        return 'MENANG';
       } else {
         scoreComputerCount += 1;
         kesempatanTotal -= 1;
-        return 'KALAH..';
+        return 'KALAH';
       }
     }
 }
@@ -64,12 +64,13 @@ function infoBG(hasil) {
   if (hasil === 'SERI') {
     info.style.backgroundColor = '#EDEDED';
     info.classList.add('text-black');
-  } else if (hasil === 'MENANG!') {
+  } else if (hasil === 'MENANG') {
     info.classList.remove('text-black');
-    info.style.backgroundColor = 'lightseagreen';
-  } else if (hasil === 'KALAH..') {
+    info.style.backgroundColor = '#437057';
+  } else if (hasil === 'KALAH') {
     info.classList.remove('text-black');
-    info.style.backgroundColor = 'crimson';
+    info.style.backgroundColor = '#FF3F33';
+info.style.fontSize = '20px';
   }
 }
 
@@ -97,20 +98,20 @@ function putarGambar() {
 
 function noteComp() {
   const text = Math.random();
-    if(text < 0.2) return 'Better luck next time';
-    else if(text >= 0.2 && text < 0.4) return 'BISA YOK!';
-    else if(text >= 0.4 && text < 0.6) return 'Masa menyerah sih?';
-    else if(text >= 0.6 && text < 0.8) return 'BGST lu wahai Computer!';
-      return 'Ya nggak tau, kok tanya saya..';
+    if(text < 0.2) return 'Belajar dulu gih, baru lawan aku 😌';
+    else if(text >= 0.2 && text < 0.4) return 'Cuma butuh satu algoritma buat ngalahin kamu.';
+    else if(text >= 0.4 && text < 0.6) return 'Ayo... jangan menyerah segampang itu!';
+    else if(text >= 0.6 && text < 0.8) return 'Kalah itu proses, menang itu aku.';
+      return 'Aku udah update ke versi Pro 💻';
 }
 
 function notePlayer() {
   const text = Math.random();
-    if(text < 0.2) return 'GG Gaming!';
-    else if(text >= 0.2 && text < 0.4) return '*(playing NCS Safe and Sound Music)*';
-    else if(text >= 0.4 && text < 0.6) return 'Computernya kena mental (emote batu)';
-    else if(text >= 0.6 && text < 0.8) return 'To the moon!';
-      return 'hmm... INTERESTING!';
+    if(text < 0.2) return 'Victory is your middle name!';
+    else if(text >= 0.2 && text < 0.4) return 'Boleh juga skill-nya~ 🎮';
+    else if(text >= 0.4 && text < 0.6) return 'Computernya kaget sampe freeze.';
+    else if(text >= 0.6 && text < 0.8) return 'Next level unlocked!';
+      return 'Kamu main ini tiap hari ya?';
 }
 
 pilihan.forEach(function(img) {

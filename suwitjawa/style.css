@@ -1,5 +1,7 @@
-@import "https://fonts.googleapis.com/css?family=Montserrat:200,400,700&display=swap";
-
+* {
+  font-family: "Montserrat";
+}
+/* MAIN STYLE */
 i {
   font-style: italic;
 }
@@ -9,19 +11,20 @@ body {
   background: #f9f9f9;
   /* background: rgba(0,0,0,.8) !important; */
   color: #0a1931;
-  font-family: "Montserrat", serif;
+  font-family: "Montserrat", serif !important;
 }
 
-h1 {
+#judul {
   font-size: 60px;
-  font-weight: bold;
+  font-weight:800;
   text-align: center;
   margin: 10px 0;
   margin-top: 30px;
   text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
 }
-h1 span {
-  color: #2C5F2D;
+#judul span {
+  color: #5c33f6;
   opacity: 0.8;
 }
 .desc {
@@ -37,17 +40,19 @@ b {
 }
 
 .area-score {
+  font-weight: bold;
   display: flex;
   justify-content: center;
 }
 
 #score-computer {
   margin-right: 5px;
-  color: #0063B2;
+  color: #5c33f6;
 }
+
 #score-player {
   margin-left: 5px;
-  color: #2C5F2D;
+  color: #da0037;
 }
 
 .nofocus {
@@ -74,6 +79,7 @@ b {
   right: 0;
   left: 0;
   color: #0a1931;
+  /* background: linear-gradient(45deg, #5C33F6, #DA0037); */
   background: rgba(249, 249, 249, 0.95);
   border: 4px solid #0a1931;
   border-radius: 15px;
@@ -142,7 +148,7 @@ b {
   width: 560px;
   height: 250px;
   margin: 5px auto;
-  background: linear-gradient(to bottom, #0247d0 0%, #023864 100%);
+  background: linear-gradient(to bottom, #185adb 0%, #5c33f6 100%);
   position: relative;
   padding-top: 40px;
   box-sizing: border-box;
@@ -154,7 +160,7 @@ b {
   width: 560px;
   height: 250px;
   margin: 5px auto;
-  background: linear-gradient(to bottom, #2C5F2D 0%, #13e116 100%);
+  background: linear-gradient(to bottom, #cd113b 0%, #da0037 100%);
   position: relative;
   border-radius: 0 0 40px 40px;
   box-shadow: 0 0.5rem 1rem rgba(218, 0, 55, 0.15);
@@ -163,13 +169,13 @@ b {
 .info {
   width: 150px;
   height: 60px;
-  border: 5px solid #2C5F2D;
+  border: 5px solid #cd113b;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   position: absolute;
   left: 50%;
   margin-left: -75px;
-  top: 50%;
-  margin-top: -30px;
+  top: 58%;
+  margin-top: -75px;
   background: #f9f9f9;
   color: #f9f9f9 !important;
   border-radius: 30px;
@@ -225,18 +231,17 @@ li.pilihan {
   transform: scale(0.95);
 }
 
+/* strong { color: #DA0037;}
+em { color: #5C33F6; } */
 strong,
 em {
   text-decoration: underline;
 }
 samp {
-  color: #0063B2;
+  color: #5c33f6;
   font-weight: bold;
 }
-sub {
-  color: #2C5F2D;
-  font-weight: bold;
-}
+
 
 .tutorial {
   border-top: 3px solid rgba(0, 0, 0, 0.1);
@@ -295,7 +300,6 @@ sub {
 .container-aturan .aturan-box {
   font-size: 17px;
   list-style: decimal;
-  font-family: "Montserrat", serif;
   font-weight: normal;
 }
 
@@ -308,7 +312,7 @@ sub {
   margin-top: 25px;
   font-size: 28px;
   text-align: center;
-  color: #023864;
+  color: #da0037;
 }
 .credit {
   font-size: 16px;
@@ -316,7 +320,7 @@ sub {
 }
 .credit a {
   text-decoration: none;
-  color: #023864;
+  color: #da0037;
   font-weight: bold;
 }
 .credit a:hover {
@@ -325,12 +329,13 @@ sub {
 
 /* RESPONSIVE */
 @media (max-width: 576px) {
-  h1 {
+  #judul {
     margin: 0;
     margin-top: 20px;
+      font-size: 32px;
   }
   p {
-    margin-top: 10px;
+    margin: 10px;
     line-height: 140%;
     font-size: 16px;
   }
@@ -342,7 +347,11 @@ sub {
   #score-player {
     font-size: 4.5rem;
   }
-
+#bts-score {
+  font-weight: bold;
+  font-size: 64px;
+  margin: 0 2px;
+}
   .score-result {
     width: 90%;
     height: 380px;
@@ -370,6 +379,7 @@ sub {
   .container {
     width: 100%;
     margin: 0;
+    /* padding: 30px 0 0 0; */
     padding: 0px 0 0 0;
     position: relative;
   }
@@ -396,8 +406,8 @@ sub {
     position: absolute;
     left: 50%;
     margin-left: -75px;
-    top: 50%;
-    margin-top: -60px;
+    top: 39%;
+    margin-top: 0;
   }
 
   ul.pilihan-box {
@@ -486,7 +496,6 @@ sub {
   .container-aturan .aturan-box {
     font-size: 14px;
     list-style: decimal;
-    font-family: "Montserrat", serif;
     font-weight: normal;
   }
 
@@ -533,7 +542,7 @@ sub {
   }
 }
 
-/* TOOLTIP DARI BOOTSTRAP (EDIT) */
+/* TOOLTIP */
 .tooltip {
   position: absolute;
   z-index: 1070;
