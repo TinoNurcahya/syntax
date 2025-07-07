@@ -291,3 +291,170 @@ const panjangNama = nama => {
   const panjang = nama.length;
   return panjang;
 }; */
+
+
+//* ==================== THIS PADA ARROW FUNCTION ====================
+//? Arrow function tidak punya this sendiri. Artinya, this di dalam arrow function akan mengacu ke this dari lingkungan di mana dia didefinisikan (bukan di mana dia dipanggil).
+
+//? fungsi biasa
+const obj = {
+  nama: "Tino",
+  halo: function() {
+    console.log(this.nama); // mengacu ke obj
+  }
+};
+
+obj.halo(); // Output: "Tino"
+
+//? arrow function
+const objek = {
+  nama: "Tino",
+  halo: () => {
+    console.log(this.nama); // `this` bukan mengacu ke obj!
+  }
+};
+
+objek.halo(); // Output: undefined (atau error), karena `this` diambil dari luar obj
+
+//! ========== kapan cocok digunakan? ==========
+function Timer() {
+  this.detik = 0;
+  
+  setInterval(() => {
+    this.detik++;
+    console.log(this.detik);
+  }, 1000);
+}
+
+new Timer();
+
+// Kalau pakai function biasa, this akan jadi window atau undefined (di strict mode), bukan Timer.
+
+
+
+//* ==================== HIGHER ORDER FUNCTION ====================
+//? ========== Higher Order Function (HOF) di JavaScript adalah fungsi yang bisa menerima fungsi lain sebagai argumen, atau mengembalikan fungsi lain sebagai hasilnya. ==========
+
+//? ========== CIRI-CIRI ==========
+/* Menerima fungsi sebagai parameter
+Mengembalikan fungsi sebagai output */
+
+//! ========== HOF yang menerima fungsi sebagai parameter ==========
+function sayHello(name) {
+  return `Hello, ${name}!`;
+}
+
+function greet(callback) {
+  const result = callback("Tino");
+  console.log(result);
+}
+
+greet(sayHello); // Output: Hello, Tino!
+
+//? greet adalah Higher Order Function karena menerima fungsi sayHello sebagai parameter.
+
+//! ========== HOF yang mengembalikan fungsi ==========
+function multiplier(factor) {
+  return function(number) {
+    return number * factor;
+  };
+}
+
+const double = multiplier(2);
+console.log(double(5)); // Output: 10
+
+//? multiplier adalah Higher Order Function karena dia mengembalikan fungsi baru.
+
+
+//* ==================== HIGHER ORDER FUNCTION: FILTER, MAP, &   REDUCE ====================
+//! ========== 1. FILTER ==========
+//? Menyaring elemen array berdasarkan kondisi tertentu.
+//? Mengembalikan array baru yang hanya berisi item yang lulus kondisi.
+const angka = [1, 2, 3, 4, 5, 6];
+const genap = angka.filter((nilai) => nilai % 2 === 0);
+console.log(genap); // [2, 4, 6]
+
+//! ========== 2. MAP ==========
+//? Mengubah setiap elemen array dan mengembalikan array baru hasil transformasi.
+//? Melakukan operasi terhadap setiap item dalam array.
+const angkav2 = [1, 2, 3];
+const kaliDua = angkav2.map((nilai) => nilai * 2);
+console.log(kaliDua); // [2, 4, 6]
+
+//! ========== 3. REDUCE ==========
+//? Menggabungkan semua elemen array menjadi satu nilai akhir (akumulasi).
+//? Melakukan penghitungan total, penggabungan, atau akumulasi nilai.
+const angkav3 = [1, 2, 3, 4];
+const total = angkav3.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+console.log(total); // 10
+
+/* Keterangan
+accumulator merupakan hasil sebelumnya (dimulai dari 0)
+currentValue merupakan elemen saat ini dalam array */
+
+//! ========== Method Chaining (berantai) ==========
+const angkav4 = [1, 2, 3, 4, 5, 6];
+const hasilnya = angkav4
+  .filter(n => n % 2 === 0)     // ambil yang genap [2, 4, 6]
+  .map(n => n * 2)              // kali 2 => [4, 8, 12]
+  .reduce((a, b) => a + b, 0);  // jumlahkan => 24
+
+console.log(hasil); // 24
+
+
+
+
+//* ==================== ASYNCHRONUS PROGRAMMING DI JAVASCRIPT ====================
+setTimeout()
+Menjalankan fungsi sekali setelah jeda waktu tertentu
+console.log("Mulai");
+setTimeout(() => {
+  console.log("Ini muncul setelah 2 detik");
+}, 2000);
+console.log("Selesai");
+
+
+setInterval()
+Menjalankan fungsi berulang setiap interval waktu
+setInterval(() => {
+  console.log("Tiap 1 detik muncul ini");
+}, 1000);
+
+
+fetch()
+Mengambil data dari server/API secara asynchronous (biasa pakai Promise)
+
+XMLHttpRequest
+Cara lama untuk request ke server (sebelum fetch)
+
+Event Loop
+
+Callback Function
+
+clearTimeout() dan clearInterval()
+
+Promise
+Objek yang mewakili hasil yang belum tersedia tapi akan datang
+
+Async / Await
+Penulisan asynchronous yang lebih mudah dibaca (berdasarkan Promise)
+async function ambilData() {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Terjadi kesalahan:", error);
+  }
+}
+
+ambilData();
+
+
+addEventListener()
+Menunggu Event dari user (klik, input, dll) tanpa menghambat kode lainnya
+document.getElementById("tombol").addEventListener("click", function () {
+  alert("Tombol ditekan!");
+});
