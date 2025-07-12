@@ -1,4 +1,4 @@
-// `` (backtick) atau disebut sebagai sting literal
+//? `` (backtick) atau disebut sebagai sting literal
 
 
 //* ==================== OBJECT ====================
@@ -402,6 +402,125 @@ const hasilnya = angkav4
   .reduce((a, b) => a + b, 0);  // jumlahkan => 24
 
 console.log(hasil); // 24
+
+
+//* ==================== TEMPLATE LITERALS/ TEMPLATE STRING ====================
+//! string literal menggunakan backtick (``)   `${umur} Tahun`;
+
+//! template literal
+/*  • menggunakan `` backtick 
+  • milti-line string 
+  • embedded expression
+  • HTML Fragments
+  • expression interpolation
+  • tagged template */
+
+  `string text`
+
+  //! multi-line string / HTML FRAGMENT (menyisipkan tag html dl)
+  `string text baris 1
+   string text baris 2
+   string text baris 3
+  `
+  let el = `<div class="mhs">
+  <h2>${mhs.nama}</h2>
+  <span class="bro">${mhs.nrp}</span>
+  </div>`
+
+  //! expression iterpolation
+  let a = 10;
+  let b = 15;
+  console.log(`jika a = 10 dan b = 15, maka hasil penjumlahannya adalah : ${a + b}, bukan ${2 * a + b}`);
+
+  //! embedded expression (function, alert, dll)
+  `string text ${expression} string text`
+  
+  const x = 11;
+  console.log(`${(x % 2 == 0) ? 'genap' : 'ganjil'}`);
+  
+  const umur = 33;
+  console.log(`saya ${umur} tahun.`);
+
+  //! tagged template
+  tagFunction`String literal ${expression1} lainnya ${expression2}`
+
+    //? CONTOH TAG TEMPALTE
+    function contoh(strings, ...values) {
+      console.log(strings); // Array bagian string
+      console.log(values);  // Array ekspresi
+    }
+
+    const nama = "Tino";
+    const umurnya = 21;
+
+    contoh`Halo, nama saya ${nama} dan saya berumur ${umurnya} tahun.`;
+
+    //? HASIL
+    ["Halo, nama saya ", " dan saya berumur ", " tahun."]
+    ["Tino", 21]
+
+    //? Contoh Penggunaan Nyata — Auto UPPERCASE
+    function toUpper(strings, ...values) {
+      return strings.reduce((result, str, i) => {
+        const value = values[i] ? String(values[i]).toUpperCase() : "";
+        return result + str + value;
+      }, "");
+    }
+
+    const kota = "jakarta";
+    const negara = "indonesia";
+
+    const hasilny = toUpper`Saya tinggal di ${kota}, ${negara}`;
+    console.log(hasilny);
+    // Output: Saya tinggal di JAKARTA, INDONESIA
+
+    //? Contoh Penggunaan Nyata — Format Mata Uang
+    function rupiah(strings, ...values) {
+      return strings.reduce((hasil, str, i) => {
+        const val = typeof values[i] === 'number' 
+          ? `Rp${values[i].toLocaleString('id-ID')}`
+          : values[i];
+        return hasil + str + (val || '');
+      }, '');
+    }
+
+    const harga = 15000;
+    console.log(rupiah`Harga barang ini adalah ${harga}`);
+    // Output: Harga barang ini adalah Rp15.000
+
+    //? Contoh Penggunaan Nyata — Highlight pencarian
+    //? <input type="text" id="cari" placeholder="Ketik keyword..." oninput="highlightLangsung()" />
+
+    <div id="output"></div>
+    // Fungsi tagged template untuk highlight
+    function highlight(strings, ...values) {
+      return strings.reduce((result, str, i) => {
+        let val = values[i];
+        if (typeof val === 'string' && highlight.keyword) {
+          const regex = new RegExp(`(${highlight.keyword})`, 'gi');
+          val = val.replace(regex, '<mark>$1</mark>');
+        }
+        return result + str + (val || '');
+      }, '');
+    }
+
+    // Fungsi dipanggil setiap kali user mengetik
+    function highlightLangsung() {
+      const inputKeyword = document.getElementById('cari').value;
+      highlight.keyword = inputKeyword;
+
+      const nama = "seorang programmer hebat.";
+      const hasil = highlight`Hasil pencarian: ${nama}`;
+
+      document.getElementById('output').innerHTML = hasil;
+    }
+
+    // Tampilkan default di awal
+    highlightLangsung();
+
+
+
+//* ==================== DESTRUCTURING  VARIABLE / ASSIGNMENT ====================
 
 
 
