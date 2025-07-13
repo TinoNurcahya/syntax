@@ -521,6 +521,92 @@ console.log(hasil); // 24
 
 
 //* ==================== DESTRUCTURING  VARIABLE / ASSIGNMENT ====================
+//! Array
+const colors = ["red", "green", "blue"];
+const [first, second, third] = colors;
+
+console.log(first, second, third); // red green blue
+
+//! object
+const person = {
+  name: "Tino",
+  age: 20
+};
+const { name, age } = person;
+
+console.log(name, age); // Tino 20
+
+//! Destructuring untuk Swap Value
+let m = 5
+let n = 10;
+[m, n] = [n, m];
+
+console.log(m); // 10
+console.log(n); // 5
+
+//! Destructuring di Function Return
+function getUser() {
+  return {
+    username: "tinonur",
+    email: "tino@mail.com",
+    role: "admin"
+  };
+}
+
+// Destructuring
+const { username, email } = getUser();
+
+console.log(username); // tinonur
+console.log(email);    // tino@mail.com
+
+//! Destructuring di Parameter Function
+const printUser = ({ name, age }) => {
+  console.log(`${name} is ${age} years old`);
+};
+
+const user = { name: "Tino", age: 20, gender: "male" };
+printUser(user); // Tino is 20 years old
+
+//! Destructuring Nested (bersarang)
+const student = {
+  name: "Tino",
+  grades: {
+    math: 90,
+    english: 85
+  }
+};
+
+const { grades: { math, english } } = student;
+console.log(math, english); // 90 85
+
+
+//* ==================== DESTRUCTURING  FUNCTION ====================
+//! CONTOH PADA OBJEK
+function tampilkanUser({ nama, umur }) {
+  console.log(`Nama: ${nama}`);
+  console.log(`Umur: ${umur}`);
+}
+const user = { nama: "Tino", umur: 20 };
+tampilkanUser(user);
+
+//! CONTOH PADA ARRAY
+function prosesData([nama, umur]) {
+  console.log(`Nama: ${nama}, Umur: ${umur}`);
+}
+prosesData(["Tino", 20]);
+
+//! DENGAN DEFAULT VALUE
+function buatAkun({ username, password, isAdmin = false }) {
+  console.log(`Username: ${username}`);
+  console.log(`Admin: ${isAdmin}`);
+}
+buatAkun({ username: "tino", password: "12345" });
+
+
+function penjumlahanPerkalian(a,b) {
+  return [a + b, a * b];
+}
+const ju
 
 
 
