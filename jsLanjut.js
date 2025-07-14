@@ -580,14 +580,15 @@ const { grades: { math, english } } = student;
 console.log(math, english); // 90 85
 
 
+
 //* ==================== DESTRUCTURING  FUNCTION ====================
 //! CONTOH PADA OBJEK
 function tampilkanUser({ nama, umur }) {
   console.log(`Nama: ${nama}`);
   console.log(`Umur: ${umur}`);
 }
-const user = { nama: "Tino", umur: 20 };
-tampilkanUser(user);
+const pengguna = { nama: "Tino", umur: 20 };
+tampilkanUser(pengguna);
 
 //! CONTOH PADA ARRAY
 function prosesData([nama, umur]) {
@@ -607,6 +608,198 @@ function penjumlahanPerkalian(a,b) {
   return [a + b, a * b];
 }
 const ju
+
+
+
+//* ==================== FOR..OF & FOR..IN====================
+//! FOR..IN 
+/* COCOK UNTUK:  Objek ({}) dan properti pada objek.
+Juga bisa digunakan pada array, tapi tidak dianjurkan karena urutan indeks tidak terjamin. */
+for (let key in object) {
+  // Akses dengan object[key]
+}
+
+//? CONTOH
+const user = { name: "Tino", age: 21 };
+
+for (let key in user) {
+  console.log(key, ":", user[key]);
+}
+// Output:
+// name : Tino
+// age : 21
+
+//! FOR..OF (data yang bisa diiterasi seperti array, string, Map, Set)
+/* COCOK UNTUK ARRAY, STRING, MAP, SET, NODELIST(DOM) */
+for (let value of iterable) {
+  // value langsung nilainya
+}
+
+//? CONTOH
+const fruits = ["apple", "banana", "mango"];
+
+for (let fruit of fruits) {
+  console.log(fruit);
+}
+// Output:
+// apple
+// banana
+// mango
+
+//! Contoh Kesalahan Umum
+const arr = ['a', 'b', 'c'];
+
+// Salah pakai for...in untuk array
+for (let index in arr) {
+  console.log(index);      // 0, 1, 2  (index, bukan value)
+  console.log(arr[index]); // a, b, c
+}
+
+// Benar pakai for...of
+for (let value of arr) {
+  console.log(value);      // a, b, c
+}
+
+
+
+//* ==================== SPREAD OPERATOR ====================
+//? Spread Operator (...) digunakan untuk "menyebarkan" (spread) elemen dari array, objek, atau string ke tempat lain, biasanya saat membuat array/objek baru atau mengoper argumen ke fungsi.
+
+//! Menggabungkan Array 2 atau lebih
+const angka1 = [1, 2];
+const angka2 = [3, 4];
+
+const gabungan = [...angka1, ...angka2];
+console.log(gabungan); // [1, 2, 3, 4]
+
+//!  Menyalin Array
+const buah1 = ['apel', 'pisang'];
+const buah2 = [...buah1]; // salin isi buah1
+
+buah2.push('jeruk');
+
+console.log(buah1); // ['apel', 'pisang']
+console.log(buah2); // ['apel', 'pisang', 'jeruk']
+
+//!  Mengubah string jadi array karakter
+const kata = "Halo";
+const huruf = [...kata];
+
+console.log(huruf); // ['H', 'a', 'l', 'o']
+
+
+//* ==================== REST PARAMETER ====================
+//? Rest Parameter adalah sintaks ... (tiga titik) yang digunakan dalam parameter fungsi untuk mengumpulkan sisa argumen yang dikirim ke fungsi menjadi satu array.
+function namaFungsi(...parameter) {
+  // parameter akan berisi array
+}
+
+//!  Contoh sederhana
+function cetakNamaLengkap(...nama) {
+  console.log(nama);
+}
+
+cetakNamaLengkap("Tino", "Nurcahya", "Orion");
+// Output: ["Tino", "Nurcahya", "Orion"]
+
+//!  CONTOH: Menjumlahkan Semua Angka
+function jumlahkan(...angka) {
+  let total = 0;
+  for (let n of angka) {
+    total += n;
+  }
+  return total;
+}
+
+console.log(jumlahkan(1, 2, 3, 4, 5)); // Output: 15
+
+//!  REST HANYA BOLEH DI TERAKHIR
+// ❌ Error!
+function test(a, ...rest, b) {}
+
+// ✅ Benar:
+function test(a, b, ...rest) {
+  console.log(a);    // argumen pertama
+  console.log(b);    // argumen kedua
+  console.log(rest); // sisanya dalam array
+}
+test(10, 20, 30, 40, 50);
+// a: 10, b: 20, rest: [30, 40, 50]
+
+//!  Contoh Perbedaan
+// REST
+function test(...nilai) {
+  console.log(nilai); // ['a', 'b', 'c']
+}
+test('a', 'b', 'c');
+
+// SPREAD
+const huruf = ['a', 'b', 'c'];
+console.log(...huruf); // 'a' 'b' 'c'
+
+
+
+//* ==================== ASYNCHRONUS PROGRAMMING DI JAVASCRIPT ====================
+//? Dalam JavaScript, asynchronous memungkinkan kode berjalan di belakang layar, tidak menghalangi baris kode berikutnya dieksekusi.
+//? Kamu masak mie instan. Sambil nunggu mie matang 3 menit, kamu bisa sambil nyuci piring. Itu asynchronous. Kalau kamu cuma nunggu mie sambil bengong, itu synchronous (blocking).
+
+//? kenapa butuh Asynchronous
+/*  • Mengambil data dari server/API (AJAX, fetch)
+  • Menunggu user klik/tindakan
+  • Membaca file besar
+  • Operasi jaringan atau database
+  */
+
+//!  Callback (MUDAH DIPAHAMI TAPI BISA CALLBACK HELL)
+function ambilData(callback) {
+  setTimeout(() => {
+    callback("Data berhasil diambil");
+  }, 1000);
+}
+
+ambilData((hasil) => {
+  console.log(hasil); // Output: "Data berhasil diambil"
+});
+
+
+//!  Promise (LEBIH RAPI DARI CALLBACK TAPI LEBIH PANJANG)
+const janji = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Berhasil!"), 1000);
+});
+
+janji.then((hasil) => console.log(hasil));
+// Output setelah 1 detik: "Berhasil!"
+
+
+//!  ajax
+
+//!  async & await (CARA MODERN & MUDAH) (MIRIP SYNC, BUTUH TRY/CATCH UNTUK ERROR)
+function ambilData() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve("Data OK"), 1000);
+  });
+}
+
+async function tampilkan() {
+  console.log("Mulai");
+  const data = await ambilData();
+  console.log(data); // "Data OK"
+  console.log("Selesai");
+}
+
+tampilkan();
+// Output: Mulai → Data OK → Selesai
+
+
+console.log("1");
+setTimeout(() => console.log("2"), 1000);
+console.log("3");
+// Output: 1, 3, 2
+// setTimeout adalah fungsi async. Kode lanjut tanpa nunggu.
+
+
+
+
 
 
 
