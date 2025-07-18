@@ -57,7 +57,20 @@ Berisi catatan tag penting seperti:
 - DOM & Event
 - DOM selection, DOM manipulation, DOM traversal
 - method
-- event prevent default, event handler, event bubling
+- event prevent default, event handler, event bubling, event propagation
+  
+- Object
+- Execution context, hoisting, scope
+- Closure
+- Arrow function, this arrow function
+- Higher order function (filter, map, reduce)
+- Template literals/ template string
+- Destructuring variable/ assignment, destructuring function
+- For..of & for..in
+- Spread operator
+- REST parameter
+- Asynchronous, callback, promise, fetch, async await
+- Error handling
 
 ---
 
