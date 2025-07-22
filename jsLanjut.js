@@ -12,6 +12,7 @@ let mahasiswa = {
   }
 }
 
+
 //! ========== 2. Function Declaration ==========
 function Mahasiswa(nama, energi) {
   let mahasiswa = {};
@@ -739,16 +740,16 @@ console.log(...huruf); // 'a' 'b' 'c'
 
 
 
-//* ==================== ASYNCHRONUS PROGRAMMING DI JAVASCRIPT ====================
+//* ==================== ASYNCHRONOUS PROGRAMMING DI JAVASCRIPT ====================
 //? Dalam JavaScript, asynchronous memungkinkan kode berjalan di belakang layar, tidak menghalangi baris kode berikutnya dieksekusi.
 //? Kamu masak mie instan. Sambil nunggu mie matang 3 menit, kamu bisa sambil nyuci piring. Itu asynchronous. Kalau kamu cuma nunggu mie sambil bengong, itu synchronous (blocking).
 
 //? kenapa butuh Asynchronous
 /*  • Mengambil data dari server/API (AJAX, fetch)
-  • Menunggu user klik/tindakan
-  • Membaca file besar
-  • Operasi jaringan atau database
-  */
+• Menunggu user klik/tindakan
+• Membaca file besar
+• Operasi jaringan atau database
+*/
 
 //!  Callback (MUDAH DIPAHAMI TAPI BISA CALLBACK HELL)
 function ambilData(callback) {
@@ -771,7 +772,41 @@ janji.then((hasil) => console.log(hasil));
 // Output setelah 1 detik: "Berhasil!"
 
 
-//!  ajax
+//!  ajax (XMLHttpReques cara lama, fetch() cara modern)
+//? Contoh Sederhana dengan XMLHttpRequest (cara lama)
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "data.json", true);
+xhr.onload = function () {
+  if (xhr.status === 200) {
+    const data = JSON.parse(xhr.responseText);
+    console.log(data);
+  }
+};
+xhr.send();
+
+//?  Contoh AJAX modern dengan fetch()
+fetch("data.json")
+  .then(response => response.json())
+  .then(data => {
+    console.log("Data dari server:", data);
+  })
+  .catch(error => {
+    console.error("Terjadi error:", error);
+  });
+
+//? jika digabung menggunakan sync/await
+async function ambilData() {
+  try {
+    const response = await fetch("data.json");
+    const data = await response.json();
+    console.log("Data:", data);
+  } catch (err) {
+    console.error("Gagal:", err);
+  }
+}
+
+ambilData();
+
 
 //!  async & await (CARA MODERN & MUDAH) (MIRIP SYNC, BUTUH TRY/CATCH UNTUK ERROR)
 function ambilData() {
@@ -796,6 +831,159 @@ setTimeout(() => console.log("2"), 1000);
 console.log("3");
 // Output: 1, 3, 2
 // setTimeout adalah fungsi async. Kode lanjut tanpa nunggu.
+
+
+//* ==================== ASYNCHRONUS: CALLBACK ====================
+//? Callback adalah fungsi yang dikirim sebagai argumen ke fungsi lain, dan akan dipanggil (dieksekusi) nanti, biasanya setelah suatu proses selesai.
+//? Fungsi yang dipanggil balik setelah sesuatu selesai.
+
+function ambilData(callback) {
+  setTimeout(() => {
+    callback("Data berhasil diambil");
+  }, 1000);
+}
+
+ambilData((hasil) => {
+  console.log(hasil); // Output: "Data berhasil diambil"
+});
+
+
+function bacaFile(namaFile, callback) {
+  console.log(`Membaca file ${namaFile}...`);
+  setTimeout(() => {
+    const isi = "Isi file: Halo dunia!";
+    callback(isi);
+  }, 1000);
+}
+
+bacaFile("data.txt", function(hasil) {
+  console.log(hasil);
+});
+// OUTPUT
+/* Membaca file data.txt...
+(setelah 1 detik)
+Isi file: Halo dunia! */
+
+
+
+//* ==================== ASYNCHRONUS: PROMISE ====================
+//? Promise adalah objek di JavaScript yang digunakan untuk menangani asynchronous operation (operasi yang berjalan di latar belakang, seperti ambil data dari server).
+//? Promise memberikan cara yang lebih bersih dan mudah dibaca dibandingkan callback, terutama untuk menghindari callback hell.
+
+//! konsep dasar promise
+/* States
+• Fulfielled: Berhasil diselesaikan
+• Rejected: Gagal atau error
+• pending: Sedang berlangsung
+
+callback
+• resolve: terpenuhi
+• reject: tidak terpenuhi
+• finally: waktu tunggu selesai baik terpenuhi atau tidak
+
+aksi
+• then: terpenuhi
+• catch: tidak terpenuhi
+*/
+
+
+//! SINTAKS
+const promise = new Promise((resolve, reject) => {
+  // proses async di sini
+  if (sukses) {
+    resolve(nilai);   // janji terpenuhi
+  } else {
+    reject(error);    // janji gagal
+  }
+});
+
+//? contoh Misalkan kita punya fungsi yang mengambil data user dari "server" (disimulasikan pakai setTimeout
+
+function ambilDataUser() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const sukses = true; // ganti false untuk simulasi error
+      if (sukses) {
+        resolve("Data user berhasil diambil!");
+      } else {
+        reject("Gagal mengambil data user!");
+      }
+    }, 2000);
+  });
+}
+
+ambilDataUser()
+.then((data) => {
+  console.log("SUKSES:", data);
+})
+.catch((error) => {
+  console.log("ERROR:", error);
+});
+
+//! Penjelasan
+/* 
+• Fungsi ambilDataUser mengembalikan Promise.
+  • Setelah 2 detik, dia akan resolve atau reject.
+  • .then() akan dijalankan jika sukses.
+  • .catch() akan dijalankan jika gagal/error.
+  */
+
+
+
+ //* ==================== ASYNCHRONUS: FETCH ====================
+ //? fetch adalah fungsi bawaan JavaScript untuk melakukan HTTP request (seperti GET, POST, dll).
+ //? fetch menggunakan Promise di balik layar, jadi cocok digunakan dengan .then() atau async/await.
+
+//! SINTAKS
+fetch(url, options)
+.then(response => response.json())
+.then(data => {
+  // gunakan datanya
+})
+.catch(error => {
+  // tangani error
+});
+  
+  
+//! Contoh GET request (mengambil data)
+fetch('https://jsonplaceholder.typicode.com/posts/1')
+.then(response => response.json()) // ubah dari JSON string ke JS object
+.then(data => {
+  console.log("Data yang diambil:", data);
+})
+.catch(error => {
+  console.log("Terjadi error:", error);
+});
+
+  //? HASIL (contoh)
+{
+"userId": 1,
+"id": 1,
+"title": "sunt aut facere repellat provident occaecati",
+"body": "quia et suscipit..."
+}
+
+
+//! Contoh POST request (mengirim data)
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    title: 'Belajar Fetch',
+    body: 'Ini body-nya',
+    userId: 1
+  })
+})
+  .then(response => response.json())
+  .then(data => {
+    console.log("Data berhasil dikirim:", data);
+  })
+  .catch(error => {
+    console.log("Terjadi error:", error);
+  });
+
 
 
 
