@@ -31,6 +31,8 @@ Berisi catatan tag penting seperti:
 - list
 - Form, input, tabel
 - Semantic elements, img, audio, video
+#### 🔗 Link HTML
+[https://tinonurcahya.github.io/syntax/]
 
 ---
 
