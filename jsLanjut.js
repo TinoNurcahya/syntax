@@ -933,7 +933,7 @@ ambilDataUser()
  //* ==================== ASYNCHRONUS: FETCH ====================
  //? fetch adalah fungsi bawaan JavaScript untuk melakukan HTTP request (seperti GET, POST, dll).
  //? fetch menggunakan Promise di balik layar, jadi cocok digunakan dengan .then() atau async/await.
-
+ 
 //! SINTAKS
 fetch(url, options)
 .then(response => response.json())
@@ -943,8 +943,8 @@ fetch(url, options)
 .catch(error => {
   // tangani error
 });
-  
-  
+
+
 //! Contoh GET request (mengambil data)
 fetch('https://jsonplaceholder.typicode.com/posts/1')
 .then(response => response.json()) // ubah dari JSON string ke JS object
@@ -955,12 +955,12 @@ fetch('https://jsonplaceholder.typicode.com/posts/1')
   console.log("Terjadi error:", error);
 });
 
-  //? HASIL (contoh)
+//? HASIL (contoh)
 {
-"userId": 1,
-"id": 1,
-"title": "sunt aut facere repellat provident occaecati",
-"body": "quia et suscipit..."
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati",
+  "body": "quia et suscipit..."
 }
 
 
@@ -976,18 +976,74 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
     userId: 1
   })
 })
-  .then(response => response.json())
-  .then(data => {
-    console.log("Data berhasil dikirim:", data);
+.then(response => response.json())
+.then(data => {
+  console.log("Data berhasil dikirim:", data);
   })
   .catch(error => {
     console.log("Terjadi error:", error);
   });
+  
+  
+
+//* ==================== ASYNCHRONUS: ASYNC AWAIT ====================
+/* 
+Async dan Await adalah fitur di JavaScript untuk menangani asynchronous code (kode yang tidak dieksekusi secara langsung/berurutan), dan dibangun di atas Promise. Fungsinya membuat kode asynchronous tampak seperti kode synchronous, sehingga lebih mudah dibaca dan ditulis.
+*/
+  
+//! Fungsi async
+// Kata kunci async digunakan sebelum sebuah fungsi. Artinya, fungsi tersebut akan selalu mengembalikan Promise.
+async function halo() {
+  return "Halo Dunia!";
+}
+
+halo().then(console.log); // Output: Halo Dunia!
 
 
+//! Fungsi await
+// await digunakan di dalam fungsi async untuk menunggu hasil dari Promise sebelum melanjutkan ke baris berikutnya.
+function tunggu() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Selesai menunggu!");
+    }, 2000);
+  });
+}
 
+async function proses() {
+  console.log("Mulai...");
+  const hasil = await tunggu(); // tunggu 2 detik
+  console.log(hasil);           // Output: Selesai menunggu!
+  console.log("Selesai.");
+}
 
+proses();
 
+//! Penanganan Error dengan Try-Catch (Menangani error yang terjadi di dalam fungsi async)
+async function fetchData() {
+  try {
+    const res = await fetch("https://www.omdbapi.com");
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.error("Gagal mengambil data:", err);
+  }
+}
+
+fetchData();
+
+//! Contoh Lengkap: Ambil Data dari API
+async function getUser() {
+  try {
+    const response = await fetch("https://www.omdbapi.com");
+    const data = await response.json();
+    console.log(data); // Output: objek user
+  } catch (error) {
+    console.log("Terjadi kesalahan:", error);
+  }
+}
+
+getUser();
 
 
 
@@ -1018,6 +1074,7 @@ Cara lama untuk request ke server (sebelum fetch)
 Event Loop
 
 Callback Function
+Fungsi yang dipanggil balik setelah sesuatu selesai.
 
 clearTimeout() dan clearInterval()
 
