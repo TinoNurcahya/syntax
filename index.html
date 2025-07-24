@@ -15,6 +15,48 @@
     <lik rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!--* AWAL SEMANTIK ELEMENT  -->
+    <header>
+      <!-- Logo, judul situs, dan navigasi utama -->
+      <nav>
+        <ul>
+          <li><a href="#">Beranda</a></li>
+          <li><a href="#">Tentang</a></li>
+          <li><a href="#">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h1>Judul Utama Halaman</h1>
+        <p>Paragraf pengantar atau konten utama.</p>
+      </section>
+
+      <article>
+        <h2>Artikel 1</h2>
+        <p>Isi artikel...</p>
+      </article>
+
+      <section>
+        <h2>Informasi Tambahan</h2>
+        <p>Konten tambahan...</p>
+      </section>
+
+      <aside>
+        <!-- Konten samping seperti iklan, info penulis, daftar terkait -->
+        <h3>Info Samping</h3>
+        <p>Konten terkait atau sekunder.</p>
+      </aside>
+    </main>
+    <!--* AKHIR SEMANTIK ELEMENT  -->
+    <br /><br /><br /><br /><br />
+    <hr />
+    <hr />
+    <hr />
+    <hr />
+    <hr />
+
     <!-- heading 1 wajib-->
     <h1>Welcome to my Journey- <i>Calestia</i></h1>
 
@@ -181,24 +223,95 @@
 
     <!-- form -->
     <!-- input type="text/password/radio/checkbox", textarea, select, label -->
+    <!-- input type: text, password, radio, checkbox, email, tel, url, number, range, datetime picker, color picker -->
+    <!-- autocomplete(menyimpan data yang telah di input sebelumnya), autofocus(langsung di sorot) dan required(wajib di isi) -->
+    <!-- input:(invalid, valid, required) {
+      property: value;
+    } -->
     <fieldset>
       <legend>ISI LEGEND</legend>
       <form>
-        nama depan : <input type="text" />
+        <input type="hidden" id="userid" name="userid" value="123" />
+
+        <label for="username">username : </label>
+        <input
+          type="text"
+          id="nama"
+          name="nama"
+          placeholder="Masukkan nama Anda"
+          autofocus
+          required
+          autocomplete="on"
+          oninvalid="this.setCustomValidity('ini wajib di isi cuy')" />
         <br />
-        nama belakang : <input type="text" />
+
+        <label for="password">password : </label>
+        <input type="password" id="password" name="password" />
         <br />
-        password : <input type="password" />
+
+        <label for="email">Email : </label>
+        <input type="email" id="email" name="email" />
         <br />
-        <h4>WNI : Radio button</h4>
-        <input type="radio" name="WNI" value="ya" /><label for="ya">ya</label>
+
+        <h4>Jenis kelamin :</h4>
+        <input type="radio" id="pria" name="jeniskelamin" value="pria" />
+        <label for="pria">pria</label>
+        <input type="radio" id="wanita" name="jeniskelamin" value="wanita" />
+        <label for="wanita">wanita</label>
         <br />
-        <input type="radio" name="WNI" value="tidak" /><label for="tidak">tidak</label>
+
+        <label for="umur">Umur : </label>
+        <input type="number" id="umur" name="umur" min="1" max="10" />
         <br />
-        <h4>musik favorit: (checkbox)</h4>
-        <input type="checkbox" name="musik" value="Dangdut" /><label for="Dangdut">dangdut</label>
+
+        <label for="tanggal">tanggal lahir : </label>
+        <input type="date" id="tanggal" name="tanggal" />
         <br />
-        <input type="checkbox" name="musik" value="Jazz" /><label for="Jazz">Jazz</label>
+
+        <label for="warna">Warna kesukaan : </label>
+        <input type="color" id="warna" name="warna" />
+        <br />
+
+        <label for="volume">Volume musik : </label>
+        <input type="range" id="volume" name="volume" min="0" max="100" />
+        <br />
+
+        <label for="situs">Situs sering dikunjungi : </label>
+        <input type="url" id="situs" name="situs" />
+        <br />
+
+        <label for="telepon">No HP : </label>
+        <input type="tel" id="telepon" name="telepon" />
+        <br />
+
+        <label for="cari">Cari</label>
+        <input type="search" id="cari" name="cari" />
+        <br />
+
+        <label for="waktu">Waktu bangun</label>
+        <input type="time" id="waktu" name="waktu" />
+        <br />
+
+        <label for="waktu">Waktu lokal</label>
+        <input type="datetime-local" id="waktu_lokal" name="waktu_lokal" />
+        <br />
+
+        <label for="bulan">Bulan lahir</label>
+        <input type="month" id="bulan" name="bulan" />
+        <br />
+
+        <label for="minggu">minggu ke :</label>
+        <input type="week" id="minggu" name="minggu" />
+        <br />
+
+        <h4>musik favorit:</h4>
+        <input type="checkbox" id="musik" name="musik" value="Dangdut" />
+        <label for="Dangdut">dangdut</label>
+        <br />
+        <input type="checkbox" id="musik" name="musik" value="Jazz" />
+        <label for="Jazz">Jazz</label>
+        <input type="checkbox" id="musik" name="musik" value="Pop" />
+        <label for="Pop">Pop</label>
         <br />
 
         <h4>dropdown list</h4>
@@ -207,106 +320,41 @@
           <option value="wirausaha">wirausaha</option>
         </select>
 
-        <h4>upload file</h4>
+        <h4>pengelompokan</h4>
+        <select>
+          <optgroup label="Buah-buahan">
+            <option value="apel">Apel</option>
+            <option value="pisang">Pisang</option>
+          </optgroup>
+          <optgroup label="Sayuran">
+            <option value="wortel">Wortel</option>
+            <option value="bayam">Bayam</option>
+          </optgroup>
+        </select>
+
+        <label for="foto">upload file</label>
         <input type="file" name="foto" value="upload_foto" />
         <br />
-        <input type="button" name="submit" value="submit" />
+
+        <label for="browser">List browser</label>
+        <input list="browsers" name="browser" />
+        <datalist id="browsers">
+          <option value="Edge"></option>
+          <option value="Firefox"></option>
+          <option value="Chrome"></option>
+        </datalist>
+        <br />
+
+        <label for="progress">progress penyelesaian</label>
+        <progress value="70" name="progress" max="100">70%</progress>
+        <br />
+
+        <textarea id="komentar" name="komentar" cols="30">Tulis komentar Anda di sini...</textarea>
+        <input type="reset" value="Reset Formulir" />
+        <button type="submit">kirim</button>
       </form>
     </fieldset>
     <br /><br /><br />
-
-    <!-- input type: text, password, radio, checkbox, email, tel, url, number, range, datetime picker, color picker -->
-    <!-- autocomplete(menyimpan data yang telah di input sebelumnya), autofocus(langsung di sorot) dan required(wajib di isi) -->
-    <!-- input:(invalid, valid, required) {
-      property: value;
-    } -->
-
-    <form>
-      <label for="username">username : </label>
-      <input
-        type="text"
-        id="username"
-        placeholder="nama kamu"
-        autofocus
-        required
-        autocomplete="on"
-        oninvalid="this.setCustomValidity('ini wajib di isi cuy')" />
-
-      <br />
-      <label for="password">password</label>
-      <input type="password" id="password" placeholder="isi password" />
-      <br />
-      <input type="radio" id="pria" name="jeniskelamin" />
-      <label for="pria">pria</label>
-      <input type="radio" id="wanita" name="jeniskelamin" />
-      <label for="wanita">wanita</label>
-      <br />
-      <input type="checkbox" id="menyanyi" />
-      <label for="menyanyi">menyanyi</label>
-      <input type="checkbox" id="olahraga" />
-      <label for="olahraga">olahraga</label>
-      <input type="checkbox" id="ngoding" />
-      <label for="ngoding">ngoding</label>
-    </form>
-    <br /><br /><br />
-    <form>
-      nama depan : <input type="text" />
-      <br />
-      nama belakang : <input type="text" />
-      <br />
-      password : <input type="password" />
-      <br />
-      <h4>WNI : Radio button</h4>
-      <input type="radio" name="WNI" value="ya" /><label for="ya">ya</label>
-      <br />
-      <input type="radio" name="WNI" value="tidak" /><label for="tidak">tidak</label>
-      <br />
-      <h4>musik favorit: (checkbox)</h4>
-      <input type="checkbox" name="musik" value="Dangdut" /><label for="Dangdut">dangdut</label>
-      <br />
-      <input type="checkbox" name="musik" value="Jazz" /><label for="Jazz">Jazz</label>
-      <br />
-
-      <h4>dropdown list</h4>
-      <select name="pekerjaan">
-        <option value="mahasiswa">mahasiswa</option>
-        <option value="wirausaha">wirausaha</option>
-      </select>
-
-      <h4>upload file</h4>
-      <input type="file" name="foto" value="upload_foto" />
-      <br />
-      <input type="button" name="submit" value="submit" />
-    </form>
-    <br /><br /><br />
-
-    <form>
-      <label for="username">username : </label><input type="text" id="username" />
-      <br />
-      <label for="password">password</label><input type="password" id="password" />
-      <br />
-      <input type="radio" id="pria" name="jeniskelamin" /><label for="pria">pria</label>
-      <input type="radio" id="wanita" name="jeniskelamin" /><label for="wanita">wanita</label>
-      <br />
-      <input type="checkbox" id="menyanyi" /><label for="menyanyi">menyanyi</label>
-      <input type="checkbox" id="olahraga" /><label for="olahraga">olahraga</label>
-      <input type="checkbox" id="ngoding" /><label for="ngoding">ngoding</label>
-      <br />
-      <textarea name="" id=""></textarea>
-      <br />
-      <select>
-        <option>bandung</option>
-        <option>yogyakarta</option>
-        <option>teyvat</option>
-        <option>jawa</option>
-      </select>
-      <br />
-      <label for="tanggal">masukkan tanggal</label>
-      <input type="date" name="" id="" />
-      <br />
-      <button type="submit">kirim</button>
-      <br />
-    </form>
 
     <!-- gambar -->
     <!-- alt(alternatif) dan width auto,  loading="lazy"-->
@@ -320,6 +368,12 @@
       officiis voluptas nemo optio libero nulla repellendus, sed excepturi laboriosam tempora aspernatur
       placeat nisi possimus dignissimos ipsum accusamus recusandae?
     </p>
+
+    <!-- Digunakan untuk mengelompokkan konten mandiri -->
+    <figure>
+      <img src="img/cover-blue.png" alt="cover-blue" style="width: 100%" />
+      <figcaption>Gambar 1: cover-blue.</figcaption>
+    </figure>
 
     <!-- video -->
     <!-- preload untuk mengambil info sblm menjalankan si video -->
@@ -338,5 +392,36 @@
     <marquee>
       <h2>Program studi di JTI</h2>
     </marquee>
+    <br /><br /><br />
+    <hr />
+    <hr />
+    <hr />
+
+    <!-- untuk pemenampilkan potongan kode -->
+    <code>
+      tag code digunakan untuk menampilkan potongan kode komputer. Biasanya dirender dengan font monospace.
+    </code>
+
+    <!-- pre yang berarti Preformatted Digunakan untuk menampilkan teks pra-format -->
+    <pre>
+      function hi() { 
+      console.log("Hello, world!"); 
+      }
+    </pre>
+
+    <!-- menunjukkan contoh output dari program komputer.  -->
+    <p>Output dari program adalah: <samp>Hello, world!</samp></p>
+
+    <!-- Membuat widget pengungkapan di mana pengguna dapat membuka 
+dan menutup konten.  -->
+    <details>
+      <summary>Klik untuk melihat detail</summary>
+      <p>Ini adalah detail tersembunyi yang akan muncul saat Anda mengklik summary.</p>
+    </details>
+
+    <!-- akhir laman web -->
+    <footer>
+      <p>&copy; 2025 tino. Semua Hak Dilindungi.</p>
+    </footer>
   </body>
 </html>
