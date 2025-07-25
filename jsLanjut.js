@@ -1,5 +1,42 @@
 //? `` (backtick) atau disebut sebagai sting literal
 
+//* LOCAL STOREAGE
+// Menyimpan data
+localStorage.setItem("nama", "Tino");
+// Mengambil data
+let Siapa = localStorage.getItem("nama");
+// Menghapus data
+localStorage.removeItem("nama");
+// Menghapus semua
+localStorage.clear();
+
+/*
+  <h2>Halo <span id="output">Tamu</span>!</h2>
+  <input type="text" id="namaInput" placeholder="Masukkan namamu"/>
+  <button onclick="simpanNama()">Simpan Nama</button>
+  <button onclick="hapusNama()">Hapus Nama</button>
+
+  <script>
+    // Cek apakah ada data di localStorage saat halaman dimuat
+    if (localStorage.getItem("nama")) {
+      document.getElementById("output").textContent = localStorage.getItem("nama");
+    }
+
+    function simpanNama() {
+      const nama = document.getElementById("namaInput").value;
+      if (nama) {
+        localStorage.setItem("nama", nama);
+        document.getElementById("output").textContent = nama;
+        alert("Nama disimpan!");
+      }
+    }
+
+    function hapusNama() {
+      localStorage.removeItem("nama");
+      document.getElementById("output").textContent = "Tamu";
+      alert("Nama dihapus!");
+    }
+*/
 
 //* ==================== OBJECT ====================
 //! ========== 1. Object Literal ==========
